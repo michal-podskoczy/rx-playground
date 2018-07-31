@@ -1,4 +1,4 @@
-package com.podskoczy.rx.examples._08latest;
+package com.podskoczy.rx.examples._09_latest;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;

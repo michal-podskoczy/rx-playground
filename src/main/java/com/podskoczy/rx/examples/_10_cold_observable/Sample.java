@@ -1,4 +1,4 @@
-package com.podskoczy.rx.examples._09coldobservable;
+package com.podskoczy.rx.examples._10_cold_observable;
 
 import io.reactivex.Flowable;
 

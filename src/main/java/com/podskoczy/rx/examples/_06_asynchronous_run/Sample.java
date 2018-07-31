@@ -1,14 +1,16 @@
-package com.podskoczy.rx.examples._04slowsubscriber;
+package com.podskoczy.rx.examples._06_asynchronous_run;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
+import io.reactivex.schedulers.Schedulers;
 
 public class Sample {
     public static void main(String[] args) {
         Flowable.<Integer>create(emitter -> emit(emitter), BackpressureStrategy.BUFFER)
                 .map(data -> data * 1.0)
                 .filter(data -> data > 4)
+                .observeOn(Schedulers.io())
                 .subscribe(Sample::printIt,
                         err -> System.out.println("ERROR: " + err),
                         () -> System.out.println("DONE"));

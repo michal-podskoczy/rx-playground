@@ -1,4 +1,4 @@
-package com.podskoczy.rx.examples._05asynchronousrun;
+package com.podskoczy.rx.examples._08_drop;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -7,10 +7,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class Sample {
     public static void main(String[] args) {
-        Flowable.<Integer>create(emitter -> emit(emitter), BackpressureStrategy.BUFFER)
+        Flowable.<Integer>create(emitter -> emit(emitter), BackpressureStrategy.DROP)
                 .map(data -> data * 1.0)
                 .filter(data -> data > 4)
-                .observeOn(Schedulers.io())
+                .observeOn(Schedulers.io(), false, 2)
                 .subscribe(Sample::printIt,
                         err -> System.out.println("ERROR: " + err),
                         () -> System.out.println("DONE"));
@@ -18,7 +18,7 @@ public class Sample {
 
     private static void printIt(Double value) throws InterruptedException {
         System.out.println(value + " -- " + Thread.currentThread());
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     private static void emit(FlowableEmitter<Integer> emitter) throws InterruptedException {
@@ -30,5 +30,8 @@ public class Sample {
 
             Thread.sleep(500);
         }
+
+        System.out.println("DONE emitting");
+        Thread.sleep(10000);
     }
 }

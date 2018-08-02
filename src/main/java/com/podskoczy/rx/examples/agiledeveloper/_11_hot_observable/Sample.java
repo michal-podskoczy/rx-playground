@@ -1,4 +1,4 @@
-package com.podskoczy.rx.examples._11_hot_observable;
+package com.podskoczy.rx.examples.agiledeveloper._11_hot_observable;
 
 import io.reactivex.Flowable;
 

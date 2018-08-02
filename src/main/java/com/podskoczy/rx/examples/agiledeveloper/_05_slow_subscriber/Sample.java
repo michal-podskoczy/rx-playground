@@ -1,4 +1,4 @@
-package com.podskoczy.rx.examples._03_dealing_with_errors;
+package com.podskoczy.rx.examples.agiledeveloper._05_slow_subscriber;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -9,18 +9,23 @@ public class Sample {
         Flowable.<Integer>create(emitter -> emit(emitter), BackpressureStrategy.BUFFER)
                 .map(data -> data * 1.0)
                 .filter(data -> data > 4)
-                .subscribe(System.out::println,
+                .subscribe(Sample::printIt,
                         err -> System.out.println("ERROR: " + err),
                         () -> System.out.println("DONE"));
+    }
+
+    private static void printIt(Double value) throws InterruptedException {
+        System.out.println(value + " -- " + Thread.currentThread());
+        Thread.sleep(1000);
     }
 
     private static void emit(FlowableEmitter<Integer> emitter) throws InterruptedException {
         int count = 0;
 
         while(count < 20) {
+            System.out.println("emitting " + count + " --" + Thread.currentThread());
             emitter.onNext(count++);
 
-            if(count == 7) throw new RuntimeException("something went wrong");
             Thread.sleep(500);
         }
     }

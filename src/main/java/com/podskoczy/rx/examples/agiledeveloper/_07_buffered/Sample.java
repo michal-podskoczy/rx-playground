@@ -1,4 +1,4 @@
-package com.podskoczy.rx.examples._09_latest;
+package com.podskoczy.rx.examples.agiledeveloper._07_buffered;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class Sample {
     public static void main(String[] args) {
-        Flowable.<Integer>create(emitter -> emit(emitter), BackpressureStrategy.LATEST)
+        Flowable.<Integer>create(emitter -> emit(emitter), BackpressureStrategy.BUFFER)
                 .map(data -> data * 1.0)
                 .filter(data -> data > 4)
                 .observeOn(Schedulers.io(), false, 2)

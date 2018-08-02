@@ -1,4 +1,4 @@
-package com.podskoczy.rx.examples._04_synchronous_by_default;
+package com.podskoczy.rx.examples.agiledeveloper._04_synchronous_by_default;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;

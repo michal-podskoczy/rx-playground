@@ -1,4 +1,4 @@
-package com.podskoczy.rx.examples._01_using_submission_publisher;
+package com.podskoczy.rx.examples.agiledeveloper._01_using_submission_publisher;
 
 
 public class Sample {}

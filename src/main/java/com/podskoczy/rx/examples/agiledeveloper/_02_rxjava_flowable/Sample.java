@@ -38,6 +38,8 @@ public class Sample {
     }
 
     private static void emit(FlowableEmitter<Integer> emitter) throws InterruptedException {
+
+
         int count = 0;
 
         while (count < 20) {

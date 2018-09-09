@@ -43,5 +43,8 @@ public class RxPlaygroundApplication implements ApplicationRunner {
             System.out.println("Finished.");
         }
         System.out.println(Duration.between(beforeSynchronized, LocalTime.now()).toMillis() + "ms.");
+
+        //Flowable.range(0, 10).flatMap(v -> Flowable.just(v))
+
     }
 }
